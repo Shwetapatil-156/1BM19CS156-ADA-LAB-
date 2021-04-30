@@ -1,0 +1,45 @@
+#include<stdio.h>
+#include<time.h>
+ 
+int main()
+{
+    int a[100],n,i,j,min,temp;
+    clock_t start, end;
+    double time_u;
+     
+    printf(" Enter the Number of Elements: \n");
+    scanf("%d",&n);
+     
+    printf(" Enter %d Elements:\n ",n);
+    for(i=0;i<n;i++)
+    {
+        scanf("%d",&a[i]);
+    }
+     start=clock();
+    for(i=0;i<n-1;i++)
+    {
+        min=i;
+        for(j=i+1;j<n;j++)
+        {
+            if(a[min]>a[j])
+            min=j;
+        }
+        if(min!=i)
+        {
+            temp=a[i];
+            a[i]=a[min];
+            a[min]=temp;
+        }
+    }
+     end=clock();
+     time_u=(double)(end-start)/CLOCKS_PER_SEC;
+     printf("time complexity %fs",time_u);
+    printf("\n The Sorted array in ascending order: ");
+    for(i=0;i<n;i++)
+    {
+        printf("%d ",a[i]);
+    }
+    return 0;
+}
+    
+    

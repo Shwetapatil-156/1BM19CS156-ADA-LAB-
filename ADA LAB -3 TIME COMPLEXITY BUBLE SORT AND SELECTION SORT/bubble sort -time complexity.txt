@@ -1,0 +1,38 @@
+#include <stdio.h>
+#include<time.h>
+int main()
+{
+  int arr[100], n, i, d, swap;
+  clock_t start, end;
+  double time_u;
+
+  printf("Enter number of elements\n");
+  scanf("%d", &n);
+
+  printf("Enter %d integers\n", n);
+
+  for (i = 0; i < n; i++)
+    scanf("%d", &arr[i]);
+start=clock();
+  for (i= 0 ; i < n - 1; i++)
+  {
+    for (d = 0 ; d < n - i - 1; d++)
+    {
+      if (arr[d] > arr[d+1])
+      {
+        swap       = arr[d];
+        arr[d]   = arr[d+1];
+        arr[d+1] = swap;
+      }
+    }
+  }
+end=clock();
+time_u=(double)(end-start)/CLOCKS_PER_SEC;
+printf("time complexity %fs",time_u);
+  printf("\nSorted list :\n");
+
+  for (i= 0; i<n; i++)
+     printf("%d\n", arr[i]);
+
+  return 0;
+}
