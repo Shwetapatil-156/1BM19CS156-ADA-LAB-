@@ -1,0 +1,45 @@
+#include<stdio.h>
+#include<time.h>
+
+void insertionSort(int arr[], int n)
+{
+    int i, key, j;
+    for (i = 1; i < n; i++) {
+        key = arr[i];
+        j = i - 1;
+ 
+        while (j >= 0 && arr[j] > key) {
+            arr[j + 1] = arr[j];
+            j = j - 1;
+        }
+        arr[j + 1] = key;
+    }
+}
+ 
+
+void printArray(int arr[], int n)
+{
+    int i;
+    for (i = 0; i < n; i++)
+        printf("%d ", arr[i]);
+    printf("\n");
+    
+}
+ 
+
+int main()
+{
+  int arr[] = { 78,12, 11, 13, 5, 6, 4,7,8,65, 89, 67, 54,34,98, 23, 24, 34, 57,87 };
+    int n = sizeof(arr) / sizeof(arr[0]);
+   scanf("%d",&n);
+    clock_t start, end ;
+    double time_u;
+    start=clock();
+    insertionSort(arr, n);
+    printArray(arr, n);
+ end=clock();
+ time_u=(double)(end-start)/CLOCKS_PER_SEC;
+ printf("tIme complexity=%fs",time_u);
+ 
+    return 0;
+}
